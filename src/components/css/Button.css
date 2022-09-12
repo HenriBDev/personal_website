@@ -1,18 +1,29 @@
-#button{
+.button{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     padding: 1.5% 1.5%;
     gap: 3%;
     color: white;
     height: fit-content;
     width: 100%;
-    background: rgba(37, 64, 86);
+    background: radial-gradient(ellipse, rgba(37, 64, 86, 1) 0%, rgba(37, 64, 86, 1) 100%); 
+    cursor: pointer;
     border-radius: 50px 0px;
 }
 
-#buttonBorder{
+.button:hover{
+    background: radial-gradient(ellipse, rgba(0, 12, 20, 1) 0%, rgba(37,118,182,1) 100%);
+    color: yellow;
+}
+
+.button:active{
+    background: radial-gradient(ellipse, rgba(0, 75, 133, 1) 0%, rgba(97,169,225,0.1) 100%);
+    color: yellow;
+}
+
+.buttonBorder{
     background: linear-gradient(180deg, rgba(133,198,247,1) 75%, rgba(0,108,191,0.45) 100%);
     border-radius: 50px 0px;
     width: 100%;

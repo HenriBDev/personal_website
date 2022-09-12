@@ -25,3 +25,51 @@
     gap: 4.5%;
 }
 
+#imageFrameBorder{
+    height: 80%;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2% 30px;
+    background: rgba(83, 163, 225, 0.36);
+}
+
+#imageFrame{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+#image{
+    height: 100%;
+}
+
+#descriptionFrameBorder{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    background: rgba(83, 163, 225, 0.36);
+    border-radius: 20px;
+}
+
+#descriptionFrame{
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    width: 100%;
+    height: 100%;
+}
+

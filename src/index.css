@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  line-height: 1.5em;
+  line-height: 120%;
 }
 
 html, body{
@@ -24,6 +24,12 @@ html, body{
   background: linear-gradient(45deg, rgba(35,118,182,1) 0%, rgba(9,69,115,1) 100%);
 }
 
+#title{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
 
 /* Typography */
 h1{
@@ -31,14 +37,19 @@ h1{
   font-size: 4.875rem;
   font-weight: 900;
   text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 .subHeading1{
   font-family: 'Ruda';
   font-weight: 700;
   font-size: 2rem;
+}
+
+.body1{
+  font-family: 'Rubik';
+  font-weight: 400;
+  font-size: 1.625rem;
 }
 
