@@ -1,0 +1,26 @@
+#button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1.5% 1.5%;
+    gap: 3%;
+    color: white;
+    height: fit-content;
+    width: 100%;
+    background: rgba(37, 64, 86);
+    border-radius: 50px 0px;
+}
+
+#buttonBorder{
+    background: linear-gradient(180deg, rgba(133,198,247,1) 75%, rgba(0,108,191,0.45) 100%);
+    border-radius: 50px 0px;
+    width: 100%;
+    padding: 0px 1px;
+    padding-top: 1px;
+}
+
+.buttonIcon{
+    height: 100%;
+    width: 40px;
+}

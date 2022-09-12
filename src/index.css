@@ -24,8 +24,21 @@ html, body{
   background: linear-gradient(45deg, rgba(35,118,182,1) 0%, rgba(9,69,115,1) 100%);
 }
 
+
+/* Typography */
 h1{
   font-family: 'Ruda';
   font-size: 4.875rem;
+  font-weight: 900;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
+
+.subHeading1{
+  font-family: 'Ruda';
+  font-weight: 700;
+  font-size: 2rem;
+}
+
