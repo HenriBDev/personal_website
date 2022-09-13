@@ -1,2 +1,2 @@
 export { Frame } from './Frame.jsx'
-export { Button } from './Button.jsx'
+export { TextButton } from './TextButton.jsx'
