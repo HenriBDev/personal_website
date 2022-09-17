@@ -24,21 +24,29 @@ html, body{
   background: linear-gradient(45deg, rgba(35,118,182,1) 0%, rgba(9,69,115,1) 100%);
 }
 
-#title{
-  display: flex;
-  align-items: center;
-  text-align: center;
+.buttonIcon{
+  height: 100%;
+  width: 40px;
 }
 
 
 /* Typography */
-h1{
+h1, h2{
   font-family: 'Ruda';
-  font-size: 4.875rem;
   font-weight: 900;
   text-transform: uppercase;
+  width: 100%;
+  text-align: center;
   margin: 0;
   padding: 0;
+}
+
+h1{
+  font-size: 4.875rem;
+}
+
+h2{
+  font-size: 3.875rem;
 }
 
 .subHeading1{

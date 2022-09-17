@@ -1,7 +1,7 @@
 import { Component, Fragment } from 'react';
 import '../css/Frame.css'
 import pfp from '../../media/profilePhoto.jpg'
-import { TextButton } from './'
+import { TextButton, IconButton } from './'
 
 export class Frame extends Component {
     changeMenu(menu){
@@ -12,19 +12,32 @@ export class Frame extends Component {
         return (
             <div id="frame">
 
-                <header style={this.state.view == "aboutMe" || this.state.view == "projects" ? {} : {display: "none"}}>
+                <header>
                     
+                    {this.state.view == "aboutMe" || this.state.view == "projects" ? 
+
+                    // About Me and Projects header
+                    <Fragment>
+                        <IconButton icon="fa-solid fa-arrow-left"/>
+                        <h2>{this.state.view == "aboutMe" ? "About Me" : "Projects"}</h2>
+                    </Fragment> : 
+
+                    // Main Menu header
+                    <div className="title">
+                        <h2>Henrique Barbosa</h2>
+                    </div>}
+
                 </header>
 
                 {/* Columns */}
-                <main id="columnsContainer">
+                <main>
 
                     {// Main Menu Main Content
                     (this.state.view == "mainMenu") ? <Fragment>
 
                         {/* Left column */}
                         <div className="columns">
-                            <div id="title">
+                            <div className="title">
                                 <h1>Henrique Barbosa</h1>
                             </div>
                             <a onClick={() => this.changeMenu("aboutMe")}><TextButton icon="fa-solid fa-user" text="Sobre mim" /></a>
@@ -40,9 +53,9 @@ export class Frame extends Component {
                                     <img id="image" src={pfp}/>
                                 </div>
                             </div>
-                            <div id="descriptionFrameBorder">
-                                <div id="descriptionFrame">
-                                    <span id="descriptionText" className="body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin faucibus volutpat senectus.</span>
+                            <div className="descriptionFrameBorder">
+                                <div className="descriptionFrame body1">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin faucibus volutpat senectus.
                                 </div>
                             </div>
                         </div>
@@ -52,22 +65,26 @@ export class Frame extends Component {
                     {// About Me Main Content
                     (this.state.view == "aboutMe") ? 
                         <div id="aboutMeContentFrame">
-                            <h1>About me</h1>
+
                         </div>
                     : null}
 
                     {// Projects Main Content
                     (this.state.view == "projects") ? 
                     <div id="projectsContentFrame">
-                        <h1>Projects</h1>
+
                     </div>
                 : null}
                     
 
                 </main>
 
-                <footer style={{display: "none"}}>
-
+                <footer>
+                    <div className="descriptionFrameBorder">
+                        <div className="descriptionFrame body1">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin faucibus volutpat senectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin faucibus volutpat senectus.</span>
+                        </div>
+                    </div>
                 </footer>
 
             </div>

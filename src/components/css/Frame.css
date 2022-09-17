@@ -1,31 +1,36 @@
-#frame {
-    background-color: rgba(0,12,20,0.75);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-}
-
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5% 0px;
-    width: 100%;
-}
-
 a{
     width: 100%;
     text-decoration: none;
 }
 
-#columnsContainer{
+footer{
+    display: flex;
+    align-items: center;
+    padding: 0.9% 2%;
     width: 100%;
+    height: 15%;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+    height: 15%;
+}
+
+img{
+    width: auto;
     height: 100%;
+}
+
+main{
+    width: 100%;
+    height: 70%;
     display: flex;
     gap: 1%;
-    padding: 2%;
+    padding: 1.6%;
+    padding-top: 0;
 }
 
 .columns{
@@ -38,15 +43,44 @@ a{
     gap: 4.5%;
 }
 
-#imageFrameBorder{
-    height: 80%;
-    width: 100%;
-    border-radius: 20px;
+.descriptionFrame{
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 15px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 2% 30px;
+    padding: 0.5% 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.descriptionFrameBorder{
+    width: 100%;
     background: rgba(83, 163, 225, 0.36);
+    border-radius: 20px;
+}
+
+footer > .descriptionFrameBorder{
+    height: 100%;
+    padding: 0 2%;
+}
+
+main > .columns:last-child > .descriptionFrameBorder{
+    display: none;
+    height: 20%;
+    padding: 0 5%;
+}
+
+#frame{
+    background-color: rgba(0,12,20,0.75);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+#image{
+    height: 100%;
 }
 
 #imageFrame{
@@ -59,30 +93,52 @@ a{
     border-radius: 10px;
 }
 
-#image{
+#imageFrameBorder{
     height: 100%;
-}
-
-#descriptionFrameBorder{
-    height: 20%;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 5%;
-    background: rgba(83, 163, 225, 0.36);
     border-radius: 20px;
-}
-
-#descriptionFrame{
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 15px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2%;
-    width: 100%;
-    height: 100%;
+    padding: 2% 30px;
+    background: rgba(83, 163, 225, 0.36);
 }
 
+.title{
+    width: 100%;
+}
+
+main > .columns > .title{
+    display: none;
+}
+
+/* Media queries */
+@media (min-height: 1000px){
+
+    main{
+        flex-direction: row;
+        height: 100%;
+        padding: 2%;
+    }
+
+    header{
+        display: none;
+    }
+
+    footer{
+        display: none;
+    }
+
+    main > .columns:last-child > .descriptionFrameBorder{
+        display: flex;
+    }
+
+    main > .columns > .title{
+        display: block;
+    }
+
+    #imageFrameBorder{
+        height: 80%;
+    }
+
+}
