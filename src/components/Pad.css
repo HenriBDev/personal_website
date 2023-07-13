@@ -1,0 +1,36 @@
+.pad{
+    display: flex;
+    width: 100%;
+    padding: 0 2rem;
+    background-color: rgba(53, 163, 225, 0.36);
+    border-radius: 1rem;
+}
+
+.pad[type="image"]{ height: 100%; }
+
+.pad[type="text"]{ height: fit-content; }
+
+.pad__background{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    background-color: rgba(0, 0, 0);
+}
+
+.pad[type="image"] > .pad__background{
+    align-items: center;
+    justify-content: center;
+}
+
+.pad[type="text"] > .pad__background{
+    align-items: flex-start;
+    justify-content: left;
+    color: var(--text__color--darkbg);
+    padding: .5rem 2rem;
+}
+
+.pad__display{
+    object-fit: cover;
+    height: 100%;
+}

@@ -1,5 +1,6 @@
 import './Frame.css'
 import Button from './Button';
+import Pad from './Pad';
 
 function Frame() {
     return <div className="frame">
@@ -8,13 +9,18 @@ function Frame() {
         </div>
         <div className='frame__body'>
             <div className="buttons-container">
-                <Button iconName="user" text="Sobre Mim"></Button>
-                <Button iconName="folder" text="Projetos"></Button>
-                <Button iconName="linkedin" text="LinkedIn"></Button>
-                <Button iconName="github" text="GitHub"></Button>
+                <Button iconName="user" text="Sobre Mim" />
+                <Button iconName="folder" text="Projetos" />
+                <a href="https://www.linkedin.com/in/henribdev/" target='_blank' rel='noreferrer'>
+                    <Button iconName="linkedin" text="LinkedIn" />
+                </a>
+                <a href="https://github.com/HenriBDev" target='_blank' rel='noreferrer'>
+                    <Button iconName="github" text="GitHub" />
+                </a>
             </div>
+            <Pad type="image" />
         </div>
-        <footer></footer>
+        <Pad type="text" padText="Teste?" />
     </div>
 }
  
