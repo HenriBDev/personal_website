@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import './Pad.css';
 
 function Pad({type, padText}) {
+
     return <div type={type} className="pad">
         <div className="pad__background body2">
             {type == "image" && 

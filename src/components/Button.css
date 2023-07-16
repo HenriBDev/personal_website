@@ -39,7 +39,7 @@
     background-clip: padding-box, border-box;
 }
 
-.button:hover{
+.button:hover, .button:focus{
     --button__gradient-begin-color: #001220;
     --button__gradient-end-color: #2376B6;
     transition-property: --button__gradient-begin-color, --button__gradient-end-color; 

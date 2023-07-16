@@ -15,7 +15,7 @@
     width: 100%;
     height: 100%;
     border-radius: 1rem;
-    background-color: rgba(0, 0, 0);
+    background-color: #000000;
 }
 
 .pad[type="image"] > .pad__background{
