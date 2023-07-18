@@ -20,9 +20,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    padding: .5rem 0;
     color: var(--text__color--darkbg);
     cursor: pointer;
     transition-property: --button__gradient-begin-color, --button__gradient-end-color; 
@@ -30,13 +27,24 @@
 
     /* To apply a gradient color on the border, it's necessary to treat the border as the background-image,
      * then set the background to originate from the border-box and let the padding-box clip through the border-box */
-    border-radius: 3rem 0;
     border: 2px solid transparent;
     background-color: transparent; /* Background can't have any color, the button tag has a preset color */
     /* The button tag doesn't let you set the background-image without !important */
     background-image: radial-gradient(var(--button__gradient-begin-color), var(--button__gradient-end-color)), linear-gradient(to bottom,#85C6F7 60%, #006cbf2e) !important;
     background-origin: border-box;
     background-clip: padding-box, border-box;
+}
+
+.button[type="Text"]{
+    gap: 1rem;
+    width: 100%;
+    border-radius: 3rem 0;
+    padding: .5rem 0;
+}
+
+.button[type="Icon"]{
+    border-radius: 50%;
+    padding: .5rem;
 }
 
 .button:hover, .button:focus{

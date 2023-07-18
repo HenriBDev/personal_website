@@ -38,3 +38,7 @@ h5{
     font-size: 1.625rem;
     font-weight: 400;
 }
+
+.hidden{
+    opacity: 0;
+}

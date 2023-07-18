@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import './Pad.css';
 
-function Pad({type, padText}) {
+function Pad({type, padText, imgName, imgVisibility}) {
+
+    const IMG_PATH = `src/assets/imgs/${imgName}`,
+          PAD_DISPLAY_CLASSES = "pad__display" + (imgVisibility == "Hidden" ? " hidden" : "");
 
     return <div type={type} className="pad">
         <div className="pad__background body2">
             {type == "image" && 
-                <img className="pad__display" src="src/assets/imgs/myPhoto.jpg" alt="Pad Display Screen" width="365.7" height="365.7" />
+                <img className={PAD_DISPLAY_CLASSES} src={IMG_PATH} alt="Pad Display Screen" />
             }
             {type == "text" &&
                 padText
