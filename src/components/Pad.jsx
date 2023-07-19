@@ -1,18 +1,15 @@
 import { useState } from 'react';
 import './Pad.css';
 
-function Pad({type, padText, imgName, imgVisibility}) {
+function Pad({type, onClick, padText, imgName, visibilityClass, cursor}) {
 
-    const IMG_PATH = `src/assets/imgs/${imgName}`,
-          PAD_DISPLAY_CLASSES = "pad__display" + (imgVisibility == "Hidden" ? " hidden" : "");
-
-    return <div type={type} className="pad">
+    return <div type={type} className="pad" onClick={onClick}>
         <div className="pad__background body2">
             {type == "image" && 
-                <img className={PAD_DISPLAY_CLASSES} src={IMG_PATH} alt="Pad Display Screen" />
+                <img className={`pad__display ${visibilityClass}`} src={`src/assets/imgs/${imgName}`} alt="Pad Display Screen" />
             }
-            {type == "text" &&
-                padText
+            {(type == "text-line" || type == "text-paragraph") &&
+                padText + cursor
             }
             
         </div>

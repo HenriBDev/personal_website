@@ -12,7 +12,7 @@
     box-sizing: border-box;
 }
 
-a{ text-decoration: none; }
+
 
 #root{
     height: 100vh;
@@ -21,10 +21,34 @@ a{ text-decoration: none; }
     padding: 6.75rem 6rem;
 }
 
+/* ============ Scrollbar ============ */
+::-webkit-scrollbar {
+    width: .4rem;
+}
+::-webkit-scrollbar-track {
+    background-color: #000000;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #2e2e2e;
+    border-radius: .5rem;
+    opacity: 0;
+    transition: .3s;
+    height: 0.5rem;
+}
+/* =================================== */
+
+a{ text-decoration: none; }
+
 h5{
     font-family: 'Ruda', sans-serif;
     font-size: 3.125rem;
     font-weight: 900;
+}
+
+.subheading3{
+    font-family: 'Ruda', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .subheading4{
@@ -41,4 +65,8 @@ h5{
 
 .hidden{
     opacity: 0;
+}
+
+.expand-vertically{
+    height: 100%;
 }

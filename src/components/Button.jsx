@@ -1,6 +1,6 @@
 import './Button.css'
 
-function Button({buttonType, onHover, onLeaving, iconName, text}) {
+function Button({buttonType, onHover, onLeaving, onClick, iconName, text}) {
 
     const iconPath = `src/assets/svgs/${iconName}Icon.svg`,
           iconAlt = `${iconName} Icon`;
@@ -13,11 +13,12 @@ function Button({buttonType, onHover, onLeaving, iconName, text}) {
             onFocus={onHover} 
             onBlur={onLeaving} 
             onMouseLeave={onLeaving}
+            onClick={onClick}
         >
             {buttonType == "Text" &&
                 <div className="button__text subheading4">{text}</div>
             }
-            <img className="button__icon" src={iconPath} alt={iconAlt} />
+        <img className="button__icon" src={iconPath} alt={iconAlt} />
         </button>
     );
     
