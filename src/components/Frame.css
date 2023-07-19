@@ -1,7 +1,7 @@
 .frame{
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 12, 20, 0.75);
+    background-color: rgba(22, 36, 45, 0.75);
     border-radius: 2rem;
 }
 
@@ -49,8 +49,18 @@
 .frame__body__column{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
+}
+
+.frame__body__column--main{
+    justify-content: space-between;
+}
+
+.frame__body__column--projects{
+    justify-items: flex-start;
+    background-color: #000000;
+    padding: 1rem;
+    overflow-y: scroll;
 }
 
 .frame__foot{
@@ -59,10 +69,4 @@
     align-items: center;
     width: 100%;
     height: 15%;
-}
-
-
-.return-button{
-    width: fit-content;
-    height: fit-content;
 }

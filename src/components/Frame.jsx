@@ -1,4 +1,5 @@
 import './Frame.css'
+import ImageDisplay from './ImageDisplay';
 import Button from './Button';
 import Pad from './Pad';
 import { useState, useRef, useEffect } from 'react';
@@ -17,7 +18,8 @@ function Frame() {
         [currentFrame, setCurrentFrame] = useState("Main"),
         [frameImageVisibilityClass, setFrameImageVisibilityClass] = useState(""),
         [frameVisibilityClass, setFrameVisibilityClass] = useState(""),
-        [padCursor, setpadCursor] = useState("");
+        [padCursor, setpadCursor] = useState(""),
+        [imageDisplayIsVisible, setImageDisplayIsVisible] = useState(false);
 
     // PERSISTENT VALUES
     const TEXT_INDEX = useRef(1),
@@ -26,34 +28,46 @@ function Frame() {
           CURRENT_SELECTION_PERSISTENT = useRef(currentSelection),
           CURRENT_FRAME_PERSISTENT = useRef(currentFrame),
 
+    // IMAGES AND THEIR DESCRIPTIONS
+        IMAGES = {
+            "Henrique": {
+                "filename": "myPhoto.jpg",
+                "description": "Sou eu! Henrique Barbosa, um homem jovem de óculos, cabelo encaracolado usando uma jaqueta."
+            },
+            "Bug Hunter":{
+                "filename": "bugHunter.png",
+                "description": "Projeto: Bug-Hunter, jogo estilo bomberman tematizado em bugs, o campo tem ladrilhos pisáveis, bloqueados e infectados. Há um inseto inimigo e seu personagem, um escudo com uma carinha feliz."
+            }
+        },
+
     // SELECTION VALUES
         SELECTIONS = {
             "None (Main)": {
-                "img": "myPhoto.jpg",
-                "text": "Desejo boas-vindas ao meu site! Espero que goste da estadia ;)"  
+                "img": "Henrique",
+                "text": "Desejo boas-vindas ao meu site! Espero que goste da estadia ;)"
             },
             "None (About Me)": {
                 "img": "",
                 "text": ABOUT_ME_TEXT
             },
             "None (Projects)": {
-                "img": "",
+                "img": "Bug Hunter",
                 "text": "Selecione um projeto para ver mais sobre ele."
             },
             "About Me": {
-                "img": "myPhoto.jpg",
+                "img": "Henrique",
                 "text": "Conheça mais sobre mim."
             },
             "Projects": {
-                "img": "bugHunter.png",
+                "img": "Bug Hunter",
                 "text": "Veja meus trabalhos e projetos pessoais."
             },
             "LinkedIn": {
-                "img": "myPhoto.jpg",
+                "img": "Henrique",
                 "text": "Veja meu perfil no LinkedIn."
             },
             "GitHub": {
-                "img": "myPhoto.jpg",
+                "img": "Henrique",
                 "text": "Veja meu portfolio de códigos no GitHub."
             }
         },
@@ -127,6 +141,13 @@ function Frame() {
 
     // COMPONENT
     return <div className="frame">
+        {imageDisplayIsVisible &&
+            <ImageDisplay 
+                imgName={IMAGES[SELECTIONS[currentSelection]['img']]["filename"]}
+                imgDescription={IMAGES[SELECTIONS[currentSelection]['img']]["description"]}
+                closeEvent={() => setImageDisplayIsVisible(false)}
+            />
+        }
         <div className={`frame__content ${frameVisibilityClass}`}>
             <div className='frame__head'>
                 <div className="frame__head--l-side">
@@ -147,7 +168,7 @@ function Frame() {
             </div>
             <div className={`frame__body ${currentFrame == "About Me" ? "expand-vertically" : ""}`}>
                 {currentFrame != "About Me" && (
-                    <div className="frame__body__column">
+                    <div className={`frame__body__column ${currentFrame == "Projects" ? "frame__body__column--projects" : "frame__body__column--main"}`}>
                         {currentFrame == "Main" && (<>
                             <Button
                                 buttonType="Text"
@@ -180,6 +201,9 @@ function Frame() {
                                 />
                             </a>
                         </>)}
+                        {currentFrame == "Projects" && (<>
+                            
+                        </>)}
                     </div>
                 )}
                 <Pad 
@@ -191,7 +215,20 @@ function Frame() {
                         )
                     } 
                     visibilityClass={frameImageVisibilityClass} 
-                    imgName={SELECTIONS[currentSelection]['img']}
+                    imgName={
+                        ((currentFrame == "Main" || currentFrame == "Projects") && 
+                            IMAGES[SELECTIONS[currentSelection]['img']]["filename"]
+                        ) || (currentFrame == "About Me" && 
+                            ""
+                        )
+                    }
+                    imgDescription={
+                        ((currentFrame == "Main" || currentFrame == "Projects") && 
+                            IMAGES[SELECTIONS[currentSelection]['img']]["description"]
+                        ) || (currentFrame == "About Me" && 
+                            ""
+                        )
+                    }
                     padText={
                         ((currentFrame == "Main" || currentFrame == "Projects") && 
                             ""
@@ -204,6 +241,8 @@ function Frame() {
                         if (currentFrame == "About Me"){ 
                             clearTimeout(TEXT_ANIMATION_TIMER.current)
                             setDescriptionPadText(SELECTIONS[currentSelection]['text'])
+                        }else{
+                            setImageDisplayIsVisible(true)
                         }
                     }}
                 />
