@@ -69,3 +69,5 @@ h5{
 
 .text-color-brightbg{ color: var(--text__color--brightbg); }
 .text-color-darkbg{ color: var(--text__color--darkbg); }
+
+.fill-color-brightbg{ fill: var(--text__color--brightbg); }

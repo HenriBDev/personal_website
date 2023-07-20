@@ -6,11 +6,21 @@ import Pad from './Pad';
 import { useState, useRef, useEffect } from 'react';
 import DropdownMenu from './Dropdown/DropdownMenu';
 
+const BIRTH_YEAR = 2003,
+    CURRENT_DATE = new Date();
+    
+let myAge = CURRENT_DATE.getFullYear() - BIRTH_YEAR;
+if(CURRENT_DATE.getMonth() < 2 || (CURRENT_DATE.getMonth() == 2 && CURRENT_DATE.getDate() < 10)){
+    myAge--;
+}
+
 const ABOUT_ME_TEXT = 
-    "Desenvolvendo desde 2018, criei uma aplicação web que facilita a integração de processos automatizados de diversas seções da empresa. " +
-    "Auxilio meus colegas de trabalho sendo referência e sempre com foco em atingir nossas metas. " +
-    "Possuo também projetos para uso pessoal que demonstram minhas habilidades com determinadas tecnologias. " +
-    "Continuo sempre em busca de resolver problemas e vir com novas ideias.",
+    `Opa! tudo bom? Me chamo Henrique, tenho ${myAge} anos, sou um desenvolvedor de software, programando desde 2018. ` +
+    "Criei esse site como uma maneira de me expressar e compartilhar meus projetos com o mundo. " +
+    "Sempre fui fã de lógica desde criança, e crescendo me apaixonei pelo campo da computação. " +
+    "Hoje resolvo problemas programando soluções de ideias originais e/ou atendendo a demanda do mercado. " +
+    "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânicas de jogos e queria ter minhas próprias criações. " +
+    "Acredito que games também são arte e uma maneira de contar histórias, quero emocionar as pessoas da mesma maneira que me emocionei jogando jogos como Undertale, Rakuen, Danganronpa, Ace Attorney, etc...",
 
 // IMAGES AND THEIR DESCRIPTIONS
 IMAGES = {
@@ -96,6 +106,13 @@ PROJECTS = {
             "Link": "https://github.com/Vichiat0/Warehouse"
         }
     },
+    "Desenvolvimento de Games": {
+        "Bug Hunter": {
+            "Description Image": "Bug Hunter",
+            "Description Text": "Jogo estilo Bomberman desenvolvido com JS puro.",
+            "Link": "https://henribdev.github.io/Bug-Hunter/"
+        },
+    }
 },
 
 // SELECTION VALUES
@@ -254,7 +271,7 @@ function Frame() {
                                         startFrameFadeAnimation(MAIN_BUTTONS[buttonName]["Frame Name"])
                                     }
                                     if(Object.prototype.hasOwnProperty.call(MAIN_BUTTONS[buttonName], 'Link')){
-                                        window.open(MAIN_BUTTONS[buttonName]["Link"], '_blank', "noreferrer").focus()
+                                        window.open(MAIN_BUTTONS[buttonName]["Link"], '_blank', "noreferrer")
                                     }
                                 }}
                                 iconName={MAIN_BUTTONS[buttonName]["Icon"]}

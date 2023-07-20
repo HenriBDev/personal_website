@@ -23,10 +23,12 @@
 .dropdown-row:nth-child(odd) > .dropdown-row__text{ background-color: #142431; }
 .dropdown-row:nth-child(odd) > .dropdown-row__text:hover{ background-color: #438BC3; }
 
-.dropdown-row__container{
-    display: flex;
-}
-
 .dropdown-row__icon{
     height: 100%;
+    stroke: var(--text__color--darkbg);
+    stroke-width: 5;
+}
+
+.dropdown-row:last-child .dropdown-row__icon{
+    
 }

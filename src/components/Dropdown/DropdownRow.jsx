@@ -1,17 +1,15 @@
 import './DropdownRow.css'
+import SvgIcon from '../SvgIcon';
 
 function DropdownRow({onHover, onClick, rowText, isEndRow}) {
-    return <div className="dropdown-row" onMouseEnter={onHover} onClick={onClick}>
+    return <div className="dropdown-row">
 
-        <div className="dropdown-row__container">
-            <img 
-                src={`src/assets/svgs/selectionTree${isEndRow ? "End" : ""}Icon.svg`} 
-                alt="Dropdown Row Icon" 
-                className="dropdown-row__icon"
-            />
-        </div>
+        <SvgIcon
+            iconName={`selectionTree${isEndRow ? "End" : ""}`}
+            customClasses="dropdown-row__icon"
+        />
 
-        <div className="dropdown-row__text body2">{rowText}</div>
+        <div className="dropdown-row__text body2" onMouseEnter={onHover} onClick={onClick}>{rowText}</div>
 
     </div>
 }

@@ -62,6 +62,10 @@
     color: var(--text__color--brightbg);
 }
 
+.button:active .button__icon{
+    fill: var(--text__color--brightbg);
+}
+
 .button__text{
     height: fit-content;
     /* Creates a shadow in all 8 axis from text-shadow, simulating a border (may look pixelated closely) */
@@ -72,6 +76,7 @@
 .button__icon{
     height: 2rem;
     width: 2rem;
+    fill: var(--text__color--darkbg);
 }
 
 .button__link{
