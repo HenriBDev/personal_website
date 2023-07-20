@@ -20,7 +20,7 @@ const ABOUT_ME_TEXT =
     "Sempre fui fã de lógica desde criança, e crescendo me apaixonei pelo campo da computação. " +
     "Hoje resolvo problemas programando soluções de ideias originais e/ou atendendo a demanda do mercado. " +
     "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânicas de jogos e queria ter minhas próprias criações. " +
-    "Acredito que games também são arte e uma maneira de contar histórias, quero emocionar as pessoas da mesma maneira que me emocionei jogando jogos como Undertale, Rakuen, Danganronpa, Ace Attorney, etc...",
+    "Acredito que games também são arte e uma maneira de contar histórias, quero emocionar as pessoas da mesma maneira que me emocionei jogando jogos como Undertale, Rakuen, The Desolate Hope, Persona, etc...",
 
 // IMAGES AND THEIR DESCRIPTIONS
 IMAGES = {
