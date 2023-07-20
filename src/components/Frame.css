@@ -61,6 +61,7 @@
     background-color: #000000;
     padding: 1rem;
     overflow-y: scroll;
+    gap: 1rem;
 }
 
 .frame__foot{
@@ -69,4 +70,14 @@
     align-items: center;
     width: 100%;
     height: 15%;
+}
+
+.more-projects-label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    color: var(--text__color--darkbg);
 }

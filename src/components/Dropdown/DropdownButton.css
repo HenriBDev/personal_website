@@ -1,0 +1,19 @@
+.dropdown-button{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    color: var(--text__color--darkbg);
+    background: linear-gradient(#191919, #3B3B3B);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.dropdown-button:active{
+    color: var(--text__color--brightbg);
+    transition-duration: 0s;
+}
+
+.dropdown-button__icon{
+    transition: .5s;
+}

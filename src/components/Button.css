@@ -20,6 +20,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    height: fit-content;
     color: var(--text__color--darkbg);
     cursor: pointer;
     transition-property: --button__gradient-begin-color, --button__gradient-end-color; 
@@ -71,4 +72,11 @@
 .button__icon{
     height: 2rem;
     width: 2rem;
+}
+
+.button__link{
+    position: absolute;
+    background-color: white;
+    height: 100%;
+    z-index: 2;
 }

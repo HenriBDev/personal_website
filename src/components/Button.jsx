@@ -18,7 +18,7 @@ function Button({buttonType, onHover, onLeaving, onClick, iconName, text}) {
             {buttonType == "Text" &&
                 <div className="button__text subheading4">{text}</div>
             }
-        <img className="button__icon" src={iconPath} alt={iconAlt} />
+            <img className="button__icon" src={iconPath} alt={iconAlt} />
         </button>
     );
     

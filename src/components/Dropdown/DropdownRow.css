@@ -1,0 +1,32 @@
+.dropdown-row{
+    width: 100%;
+    height: fit-content;
+    padding-left: 1rem;
+    display: flex;
+}
+
+.dropdown-row__text{
+    width: 100%;
+    height: fit-content;
+    border-bottom-right-radius: 1.5rem;
+    color: var(--text__color--darkbg);
+    padding: .5rem 0rem;
+    padding-left: 1rem;
+}
+.dropdown-row__text:hover{ transition: .25s; }
+.dropdown-row__text:active{ 
+    color: var(--text__color--brightbg);
+    transition-duration: 0s; 
+}
+.dropdown-row:nth-child(even) > .dropdown-row__text{ background-color: #214663; }
+.dropdown-row:nth-child(even) > .dropdown-row__text:hover{ background-color: #438BC3; }
+.dropdown-row:nth-child(odd) > .dropdown-row__text{ background-color: #142431; }
+.dropdown-row:nth-child(odd) > .dropdown-row__text:hover{ background-color: #438BC3; }
+
+.dropdown-row__container{
+    display: flex;
+}
+
+.dropdown-row__icon{
+    height: 100%;
+}
