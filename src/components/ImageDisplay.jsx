@@ -1,3 +1,4 @@
+// STYLE
 import './ImageDisplay.css'
 
 function ImageDisplay({imgName, imgDescription, closeEvent}) {

@@ -1,150 +1,16 @@
+import { MAIN_BUTTONS, PROJECTS, IMAGES, SELECTIONS } from '../js/constants';
+
+// STYLE
 import './Frame.css'
+
+// COMPONENTS
 import ImageDisplay from './ImageDisplay';
 import Button from './Button';
-import DropdownButton from './Dropdown/DropdownMenu';
 import Pad from './Pad';
-import { useState, useRef, useEffect } from 'react';
 import DropdownMenu from './Dropdown/DropdownMenu';
 
-const BIRTH_YEAR = 2003,
-    CURRENT_DATE = new Date();
-    
-let myAge = CURRENT_DATE.getFullYear() - BIRTH_YEAR;
-if(CURRENT_DATE.getMonth() < 2 || (CURRENT_DATE.getMonth() == 2 && CURRENT_DATE.getDate() < 10)){
-    myAge--;
-}
-
-const ABOUT_ME_TEXT = 
-    `Opa! tudo bom? Me chamo Henrique, tenho ${myAge} anos, sou um desenvolvedor de software, programando desde 2018. ` +
-    "Criei esse site como uma maneira de me expressar e compartilhar meus projetos com o mundo. " +
-    "Sempre fui fã de lógica desde criança, e crescendo me apaixonei pelo campo da computação. " +
-    "Hoje resolvo problemas programando soluções de ideias originais e/ou atendendo a demanda do mercado. " +
-    "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânicas de jogos e queria ter minhas próprias criações. " +
-    "Acredito que games também são arte e uma maneira de contar histórias, quero emocionar as pessoas da mesma maneira que me emocionei jogando jogos como Undertale, Rakuen, The Desolate Hope, Persona, etc...",
-
-// IMAGES AND THEIR DESCRIPTIONS
-IMAGES = {
-    "Henrique": {
-        "File Name": "myPhoto.jpg",
-        "Alt Text": "Sou eu! Henrique Barbosa, um homem jovem de óculos, cabelo encaracolado usando uma jaqueta."
-    },
-    "Bug Hunter":{
-        "File Name": "bugHunter.png",
-        "Alt Text": "Projeto: Bug Hunter, jogo estilo bomberman tematizado em bugs, o campo tem ladrilhos pisáveis, bloqueados e infectados. Há um inseto inimigo e seu personagem, um escudo com uma carinha feliz."
-    },
-    "DocWriter": {
-        "File Name": "docwriter.png",
-        "Alt Text": "Projeto: Docwriter, Chatbot do Discord que transforma suas mensagens em documentos de texto. Este é o bot exibindo uma visualização de como está o documento, mostrando o texto presente nele, a página atual e botões para trocar de página."
-    },
-    "Warehouse": {
-        "File Name": "warehouse.png",
-        "Alt Text": "Projeto: Warehouse, Site de trocas e doações, feito para facilitar o processo e unir mais as pessoas. Na landing page é exibido uma foto de pessoas com objetos nas mãos."
-    },
-    "Projects": {
-        "File Name": "projects.jpg",
-        "Alt Text": "Imagem de placeholder para os projetos, uma mesa de um desenvolvedor com ele trabalhando."
-    },
-    "Emoji Face": {
-        "File Name": "emojiFace.png",
-        "Alt Text": "Um emoji sorrindo =)."
-    }
-},
-
-// MAIN BUTTONS (SECTION CHANGING)
-MAIN_BUTTONS = {
-    "About Me": {
-        "Description Image": "Henrique",
-        "Description Text": "Conheça mais sobre mim.",
-        "Text": "Sobre Mim",
-        "Icon": "user",
-        "Frame Name": "About Me"
-    },
-    "Projects": {
-        "Description Image": "Bug Hunter",
-        "Description Text": "Olhe meus trabalhos e projetos pessoais.",
-        "Text": "Projetos",
-        "Icon": "folder",
-        "Frame Name": "Projects"
-    },
-    "LinkedIn": {
-        "Description Image": "Henrique",
-        "Description Text": "Veja meu perfil no LinkedIn.",
-        "Text": "LinkedIn",
-        "Icon": "linkedin",
-        "Link": "https://www.linkedin.com/in/henribdev/"
-    },
-    "GitHub": {
-        "Description Image": "Henrique",
-        "Description Text": "Acesse meu portfolio de códigos no GitHub.",
-        "Text": "GitHub",
-        "Icon": "github",
-        "Link": "https://github.com/HenriBDev"
-    }
-},
-
-// DROPDOWN MENUS (PROJECTS SEPARATED BY AREA)
-PROJECTS = {
-    "Desenvolvimento Web": {
-        "Esse site": {
-            "Description Image": "Emoji Face",
-            "Description Text": "Eaí? Tá curtindo a visita?",
-            "Link": window.location.href
-        },
-        "DocWriter": {
-            "Description Image": "DocWriter",
-            "Description Text": "Chatbot para Discord gerador de documentos de texto.",
-            "Link": "https://github.com/HenriBDev/DocWriter"
-        },
-        "Bug Hunter": {
-            "Description Image": "Bug Hunter",
-            "Description Text": "Jogo estilo Bomberman desenvolvido com JS puro.",
-            "Link": "https://henribdev.github.io/Bug-Hunter/"
-        },
-        "Warehouse": {
-            "Description Image": "Warehouse",
-            "Description Text": "Site para realizar trocas e doações com maior facilidade (Conceito).",
-            "Link": "https://github.com/Vichiat0/Warehouse"
-        }
-    },
-    "Desenvolvimento de Games": {
-        "Bug Hunter": {
-            "Description Image": "Bug Hunter",
-            "Description Text": "Jogo estilo Bomberman desenvolvido com JS puro.",
-            "Link": "https://henribdev.github.io/Bug-Hunter/"
-        },
-    }
-},
-
-// SELECTION VALUES
-SELECTIONS = {
-    "None (Main)": {
-        "Description Image": "Henrique",
-        "Description Text": "Desejo boas-vindas ao meu site! Espero que goste da estadia ;)"
-    },
-    "None (About Me)": {
-        "Description Image": "",
-        "Description Text": ABOUT_ME_TEXT
-    },
-    "None (Projects)": {
-        "Description Image": "Projects",
-        "Description Text": "Selecione um projeto para ver mais sobre ele."
-    },
-};
-
-// Adds main's buttons as selections
-Object.keys(MAIN_BUTTONS).forEach(buttonName => {
-    SELECTIONS[buttonName + " Button (Main)"] = {
-        "Description Image": MAIN_BUTTONS[buttonName]["Description Image"],
-        "Description Text": MAIN_BUTTONS[buttonName]["Description Text"]
-    }
-});
-
-// Adds projects as selections
-Object.keys(PROJECTS).forEach(areaName => {
-    Object.keys(PROJECTS[areaName]).forEach(projectName => {
-        SELECTIONS[projectName + " Row (Projects)"] = PROJECTS[areaName][projectName]
-    })
-});
+// REACT HOOKS
+import { useState, useRef, useEffect } from 'react';
 
 function Frame() {
     

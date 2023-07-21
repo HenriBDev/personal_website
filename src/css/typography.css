@@ -1,0 +1,41 @@
+:root{
+    --line-height-percentage: 1.5;
+    --text__color--brightbg: #FFCD1A;
+    --text__color--darkbg: #FFFFFF;
+    --text__size--heading5: 3.125rem;
+    --text__line-height--heading5: calc(var(--line-height-percentage) * var(--text__size--heading5));
+    --text__size--subheading3: 2.5rem;
+    --text__line-height--subheading3: calc(var(--line-height-percentage) * var(--text__size--subheading3));
+    --text__size--subheading4: 2rem;
+    --text__line-height--subheading4: calc(var(--line-height-percentage) * var(--text__size--subheading4));
+    --text__size--body2: 1.625rem;
+    --text__line-height--body2: calc(var(--line-height-percentage) * var(--text__size--body2));
+}
+
+h5{
+    font-family: 'Ruda', sans-serif;
+    font-size: var(--text__size--heading5);
+    line-height: var(--text__line-height--heading5);
+    font-weight: 900;
+}
+
+.subheading3{
+    font-family: 'Ruda', sans-serif;
+    font-size: var(--text__size--subheading3);
+    line-height: var(--text__line-height--subheading3);
+    font-weight: 700;
+}
+
+.subheading4{
+    font-family: 'Ruda', sans-serif;
+    line-height: var(--text__line-height--subheading4);
+    font-size: var(--text__size--subheading4);
+    font-weight: 700;
+}
+
+.body2{
+    font-family: 'Rubik', sans-serif;
+    font-size: var(--text__size--body2);
+    line-height: var(--text__line-height--body2);
+    font-weight: 400;
+}

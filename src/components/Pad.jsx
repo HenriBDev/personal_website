@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// STYLE
 import './Pad.css';
 
 function Pad({type, onClick, padText, imgName, imgDescription, visibilityClass, cursor}) {

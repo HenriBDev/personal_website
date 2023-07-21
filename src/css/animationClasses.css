@@ -1,0 +1,10 @@
+.hidden{ opacity: 0 !important; }
+
+.expand-vertically{ height: 100% !important;}
+
+.rotate-90{ rotate: 90deg !important; }
+
+.text-color-brightbg{ color: var(--text__color--brightbg) !important; }
+.text-color-darkbg{ color: var(--text__color--darkbg) !important; }
+
+.fill-color-brightbg{ fill: var(--text__color--brightbg) !important; }

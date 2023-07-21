@@ -1,5 +1,7 @@
+// STYLE
 import './DropdownButton.css'
-import { useState } from 'react';
+
+// COMPONENTS
 import SvgIcon from '../SvgIcon';
 
 function DropdownButton({menuName, onClick, dropdownIsOpen}) {

@@ -1,10 +1,10 @@
-import SvgIcon from './SvgIcon';
+// STYLE
 import './Button.css'
 
-function Button({buttonType, onHover, onLeaving, onClick, iconName, text}) {
+// COMPONENTS
+import SvgIcon from './SvgIcon';
 
-    const iconPath = `src/assets/svgs/${iconName}Icon.svg`,
-          iconAlt = `${iconName} Icon`;
+function Button({buttonType, onHover, onLeaving, onClick, iconName, text}) {
 
     return (
         <button
