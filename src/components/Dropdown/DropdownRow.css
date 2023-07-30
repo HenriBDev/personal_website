@@ -13,16 +13,17 @@
     padding: .5rem 0rem;
     padding-left: 1rem;
 }
+.dropdown-row:nth-child(even) > .dropdown-row__text{ background-color: #214663; }
+.dropdown-row:nth-child(odd) > .dropdown-row__text{ background-color: #142431; }
 .dropdown-row__text:hover{ 
     transition: .25s;
-    background-color: #438BC3;
+    background-color: #438BC3 !important; /* Needs important due to priority of the selector above */
+    cursor: pointer;
 }
 .dropdown-row__text:active{ 
     color: var(--text__color--brightbg);
     transition-duration: 0s; 
 }
-.dropdown-row:nth-child(even) > .dropdown-row__text{ background-color: #214663; }
-.dropdown-row:nth-child(odd) > .dropdown-row__text{ background-color: #142431; }
 
 .dropdown-row__icon{
     stroke: var(--text__color--darkbg);
