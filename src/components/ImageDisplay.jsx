@@ -4,7 +4,7 @@ import './ImageDisplay.css'
 function ImageDisplay({imgName, imgDescription, closeEvent}) {
     return <figure className="image-display" onClick={closeEvent}>
 
-        <img className="image-display__image" src={`src/assets/imgs/${imgName}`} alt={imgDescription} />
+        <img className="image-display__image" src={imgName} alt={imgDescription} />
         <figcaption className="image-display__description body2">{imgDescription}</figcaption>
 
     </figure>;
