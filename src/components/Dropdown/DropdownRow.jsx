@@ -25,7 +25,14 @@ function DropdownRow({onHover, onClick, rowText, isEndRow}) {
             />
         </svg>
 
-        <div className="dropdown-row__text body2" onMouseEnter={onHover} onClick={onClick}>{rowText}</div>
+        <div 
+            className="dropdown-row__text body2" 
+            onMouseEnter={onHover} 
+            onTouchStart={onHover}
+            onClick={onClick}
+        >
+            {rowText}
+        </div>
 
     </div>
 }
