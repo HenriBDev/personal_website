@@ -2,7 +2,7 @@
 export const IMAGES = {
     "Henrique": {
         "File Name": "myPhoto.jpg",
-        "Alt Text": "Sou eu! Henrique Barbosa, um homem jovem de óculos, cabelo encaracolado usando uma jaqueta."
+        "Alt Text": "Sou eu! Henrique Barbosa, um homem jovem de óculos, cabelo encaracolado usando uma regata."
     },
     "Bug Hunter":{
         "File Name": "bugHunter.png",
