@@ -124,7 +124,7 @@ function Frame() {
                 </div>
                 <div className="frame__head--r-side"></div>
             </header>
-            <div className={`frame__body ${currentFrame == "About Me" ? "expand-vertically" : ""}`}>
+            <div className={`frame__body`}>
                 {currentFrame != "About Me" && (
                     <nav className={`frame__body__column ${currentFrame == "Projects" ? "frame__body__column--projects" : "frame__body__column--main"}`}>
                         {currentFrame == "Main" && (<>

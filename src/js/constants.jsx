@@ -62,7 +62,7 @@ export const MAIN_BUTTONS = {
 // DROPDOWN MENUS (PROJECTS SEPARATED BY AREA)
 export const PROJECTS = {
     "Desenvolvimento Web": {
-        "Esse site": {
+        "Site Pessoal": {
             "Description Image": "Emoji Face",
             "Description Text": "Eaí? Tá curtindo a visita?",
             "Link": window.location.href
@@ -104,12 +104,15 @@ if(CURRENT_DATE.getMonth() < BIRTH_MONTH-1 || (CURRENT_DATE.getMonth() == BIRTH_
 }
 
 const ABOUT_ME_TEXT = 
-    `Opa! tudo bom? Me chamo Henrique, tenho ${myAge} anos, sou um desenvolvedor de software, programando desde 2018. ` +
-    "Criei esse site como uma maneira de me expressar e compartilhar meus projetos com o mundo. " +
-    "Sempre fui fã de lógica desde criança, e crescendo me apaixonei pelo campo da computação. " +
-    "Hoje resolvo problemas programando soluções de ideias originais e/ou atendendo a demanda do mercado. " +
-    "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânicas de jogos e queria ter minhas próprias criações. " +
-    "Acredito que games também são arte e uma maneira de contar histórias, quero emocionar as pessoas da mesma maneira que me emocionei jogando jogos como Undertale, Rakuen, The Desolate Hope, Persona, etc...",
+    `Opa! tudo bom? Me chamo Henrique, tenho ${myAge} anos, sou um desenvolvedor de software, programando desde 2018.\n` +
+    "Criei esse site como uma maneira de me apresentar e compartilhar meus projetos com o mundo.\n\n" +
+    "Sempre gostei muito de lógica, cálculos, deduções e o processo de desenvolver coisas novas.\n" +
+    "Hoje resolvo problemas programando soluções para ideias originais e/ou atendendo a demanda do mercado.\n\n" +
+    "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânica de videogames, é meu hobby predileto no momento.\n\n" +
+    "Atuo trabalhando com RPA, mas possuo interesse em diversas áreas do mundo de software, venho estudando nos últimos anos sobre aprendizado de máquina.\n" +
+    "Acredito que a automação de processos utilizando inteligência artifical vai continuar tornando muitas tarefas manuais obsoletas, requisitando mais atuação no processo de planejamento do que na parte prática em si.\n\n" +
+    "Se meu trabalho chamou sua atenção, nem pense duas vezes e me contate para batermos um papo =)\n" +
+    "Você pode me encontrar pelo LinkedIn, o link está na seção principal desta página.",
 
 // SELECTION VALUES
 SELECTIONS = {
