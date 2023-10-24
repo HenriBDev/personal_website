@@ -45,6 +45,10 @@
 
 .frame__head--r-side{
     width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: center; */
+    gap: .5rem;
 }
 
 .frame__head--center{
@@ -93,3 +97,13 @@
     padding: 2rem;
     color: var(--text__color--darkbg);
 }
+
+.language_selection{
+    background-color: #000000;
+    color: var(--text__color--darkbg);
+    text-align: center;
+    border-color: rgba(53, 163, 225, 0.36);;
+}
+
+.language_selection:nth-child(even){ background-color: #214663; }
+.language_selection:nth-child(odd){ background-color: #142431; }

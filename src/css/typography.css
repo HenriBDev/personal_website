@@ -10,6 +10,8 @@
     --text__line-height--subheading4: calc(var(--line-height-percentage) * var(--text__size--subheading4));
     --text__size--body2: 1.625rem;
     --text__line-height--body2: calc(var(--line-height-percentage) * var(--text__size--body2));
+    --text__size--body3: 1rem;
+    --text__line-height--body3: calc(var(--line-height-percentage) * var(--text__size--body3));
 }
 
 h5{
@@ -37,5 +39,12 @@ h5{
     font-family: 'Rubik', sans-serif;
     font-size: var(--text__size--body2);
     line-height: var(--text__line-height--body2);
+    font-weight: 400;
+}
+
+.body3{
+    font-family: 'Rubik', sans-serif;
+    font-size: var(--text__size--body3);
+    line-height: var(--text__line-height--body3);
     font-weight: 400;
 }

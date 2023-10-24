@@ -1,5 +1,3 @@
-import { MAIN_BUTTONS, PROJECTS, IMAGES, SELECTIONS } from '../js/constants';
-
 // STYLE
 import './Frame.css'
 
@@ -10,9 +8,143 @@ import Pad from './Pad';
 import DropdownMenu from './Dropdown/DropdownMenu';
 
 // REACT HOOKS
+import {useTranslation} from 'react-i18next'
 import { useState, useRef, useEffect } from 'react';
 
 function Frame() {
+    
+    const { t, i18n } = useTranslation();
+
+    // IMAGES AND THEIR DESCRIPTIONS
+    const IMAGES = {
+        "Henrique": {
+            "File Name": "myPhoto.jpg",
+            "Alt Text": t('images.me.altText')
+        },
+        "Bug Hunter":{
+            "File Name": "bugHunter.png",
+            "Alt Text": t('images.bugHunter.altText')
+        },
+        "DocWriter": {
+            "File Name": "docwriter.png",
+            "Alt Text": t('images.docWriter.altText')
+        },
+        "Warehouse": {
+            "File Name": "warehouse.png",
+            "Alt Text": t('images.warehouse.altText')
+        },
+        "Projects": {
+            // Photo by Stanley Dai on Unsplash. Link: https://unsplash.com/photos/73OZYNjVoNI
+            "File Name": "projects.jpg",
+            "Alt Text": t('images.projects.altText')
+        },
+        "Emoji Face": {
+            "File Name": "emojiFace.png",
+            "Alt Text": t('images.emojiFace.altText')
+        }
+    };
+
+    // MAIN BUTTONS (SECTION CHANGING)
+    const MAIN_BUTTONS = {
+        "About Me": {
+            "Description Image": "Henrique",
+            "Description Text": t('buttons.main.aboutMe.descriptionText'),
+            "Text": t('buttons.main.aboutMe.buttonText'),
+            "Icon": "user",
+            "Frame Name": "About Me"
+        },
+        "Projects": {
+            "Description Image": "Bug Hunter",
+            "Description Text": t('buttons.main.projects.descriptionText'),
+            "Text": t('buttons.main.projects.buttonText'),
+            "Icon": "folder",
+            "Frame Name": "Projects"
+        },
+        "LinkedIn": {
+            "Description Image": "Henrique",
+            "Description Text": t('buttons.main.linkedin.descriptionText'),
+            "Text": t('buttons.main.linkedin.buttonText'),
+            "Icon": "linkedin",
+            "Link": "https://www.linkedin.com/in/henribdev/"
+        },
+        "GitHub": {
+            "Description Image": "Henrique",
+            "Description Text": t('buttons.main.github.descriptionText'),
+            "Text": t('buttons.main.github.buttonText'),
+            "Icon": "github",
+            "Link": "https://github.com/HenriBDev"
+        }
+    };
+
+    // DROPDOWN MENUS (PROJECTS SEPARATED BY AREA)
+    let webDevelopementLabel = t('dropdownMenus.webDevelopment'),
+        gameDevelopmentLabel = t('dropdownMenus.gameDevelopment');
+
+    const PROJECTS = {}
+    PROJECTS[webDevelopementLabel] = {}
+    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.personalWebsite.buttonText')] = {
+        "Description Image": "Emoji Face",
+        "Description Text": t('buttons.projects.webDevelopment.personalWebsite.descriptionText'),
+        "Link": window.location.href
+    }
+    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.docWriter.buttonText')] = {
+        "Description Image": "DocWriter",
+        "Description Text": t('buttons.projects.webDevelopment.docWriter.descriptionText'),
+        "Link": "https://github.com/HenriBDev/DocWriter"
+    }
+    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.bugHunter.buttonText')] = {
+        "Description Image": "Bug Hunter",
+        "Description Text": t('buttons.projects.webDevelopment.bugHunter.descriptionText'),
+        "Link": "https://henribdev.github.io/Bug-Hunter/"
+    }
+    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.warehouse.buttonText')] = {
+        "Description Image": "Warehouse",
+        "Description Text": t('buttons.projects.webDevelopment.warehouse.descriptionText'),
+        "Link": "https://github.com/Vichiat0/Warehouse"
+    }
+    PROJECTS[gameDevelopmentLabel] = {}
+    PROJECTS[gameDevelopmentLabel][t('buttons.projects.gameDevelopment.bugHunter.buttonText')] = {
+        "Description Image": "Bug Hunter",
+        "Description Text": t('buttons.projects.gameDevelopment.bugHunter.descriptionText'),
+        "Link": "https://henribdev.github.io/Bug-Hunter/"
+    }
+
+    // SELECTION VALUES
+    const SELECTIONS = {
+        "None (Main)": {
+            "Description Image": "Henrique",
+            "Description Text": t('descriptionPads.main')
+        },
+        "None (About Me)": {
+            "Description Image": "",
+            "Description Text": t('descriptionPads.aboutMe')
+        },
+        "None (Projects)": {
+            "Description Image": "Projects",
+            "Description Text": t('descriptionPads.projects')
+        },
+    };
+
+    // Adds main's buttons as selections
+    Object.keys(MAIN_BUTTONS).forEach(buttonName => {
+        SELECTIONS[buttonName + " Button (Main)"] = {
+            "Description Image": MAIN_BUTTONS[buttonName]["Description Image"],
+            "Description Text": MAIN_BUTTONS[buttonName]["Description Text"]
+        }
+    });
+
+    // Adds projects as selections
+    Object.keys(PROJECTS).forEach(areaName => {
+        Object.keys(PROJECTS[areaName]).forEach(projectName => {
+            SELECTIONS[projectName + " Row (Projects)"] = PROJECTS[areaName][projectName]
+        })
+    });
+
+    // LANGUAGES
+    const LNGS = {
+        "pt-BR": { nativeName: 'Português (Brasil)' },
+        "en": { nativeName: 'English' }
+    };
     
     // STATES
     let [descriptionPadText, setDescriptionPadText] = useState(""),
@@ -21,7 +153,8 @@ function Frame() {
         [frameImageVisibilityClass, setFrameImageVisibilityClass] = useState(""),
         [frameVisibilityClass, setFrameVisibilityClass] = useState(""),
         [padCursor, setpadCursor] = useState(""),
-        [imageDisplayIsVisible, setImageDisplayIsVisible] = useState(false);
+        [imageDisplayIsVisible, setImageDisplayIsVisible] = useState(false),
+        [languageSelected, setLanguageSelected] = useState(i18n.resolvedLanguage);
         
     // PERSISTENT VALUES
     const TEXT_INDEX = useRef(1),
@@ -88,6 +221,10 @@ function Frame() {
             setTimeout(() => {
                 setpadCursor(padCursor == "█" ? "" : "█");
             }, 500)
+        },
+        changeLanguageSelected = () => {
+            i18n.changeLanguage(languageSelected)
+            clearTextAnimation()
         };
 
     // EFFECTS
@@ -96,6 +233,7 @@ function Frame() {
     useEffect(clearTextAnimation, [currentSelection]);
     useEffect(tickTextAnimation, [descriptionPadText]);
     useEffect(togglePadCursor, [padCursor]);
+    useEffect(changeLanguageSelected, [languageSelected]);
 
     // COMPONENT
     return <section className="frame">
@@ -119,10 +257,19 @@ function Frame() {
                 </div>
                 <div className='frame__head--center'>
                     {currentFrame == "Main" &&     <h5>HENRIQUE BARBOSA</h5> }
-                    {currentFrame == "About Me" && <div className='subheading3'>Sobre Mim</div>}
-                    {currentFrame == "Projects" && <div className='subheading3'>Projetos</div>}
+                    {currentFrame == "About Me" && <div className='subheading3'>{t('buttons.main.aboutMe.buttonText')}</div>}
+                    {currentFrame == "Projects" && <div className='subheading3'>{t('buttons.main.projects.buttonText')}</div>}
                 </div>
-                <div className="frame__head--r-side"></div>
+                <div className="frame__head--r-side body2">
+                    {t('languageSelectLabel')}: <select className='language_selection body3' defaultValue={i18n.resolvedLanguage} onChange={e => setLanguageSelected(e.target.value)}>
+                        {Object.keys(LNGS).map(lng => <option 
+                            key={lng} 
+                            value={lng}
+                        >
+                            {LNGS[lng]["nativeName"]}
+                        </option>)}
+                    </select>
+                </div>
             </header>
             <div className={`frame__body`}>
                 {currentFrame != "About Me" && (
@@ -153,7 +300,7 @@ function Frame() {
                                 onRowHover={rowName => startImageFadeAnimation(`${rowName} Row (${currentFrame})`)}
                                 onRowClick={rowName => window.open(PROJECTS[areaName][rowName]["Link"], '_blank', "noreferrer").focus()}
                             />)}
-                            <div className='body2 more-projects-label'>E expandindo...</div>
+                            <div className='body2 more-projects-label'>{t('projectsMenuText')}</div>
                         </>)}
                     </nav>
                 )}

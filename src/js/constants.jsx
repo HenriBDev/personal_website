@@ -1,151 +1,27 @@
-// IMAGES AND THEIR DESCRIPTIONS
-export const IMAGES = {
-    "Henrique": {
-        "File Name": "myPhoto.jpg",
-        "Alt Text": "Sou eu! Henrique Barbosa, um homem jovem de óculos, cabelo encaracolado usando uma regata."
-    },
-    "Bug Hunter":{
-        "File Name": "bugHunter.png",
-        "Alt Text": "Projeto: Bug Hunter, jogo estilo bomberman tematizado em bugs, o campo tem ladrilhos pisáveis, bloqueados e infectados. Há um inseto inimigo e seu personagem, um escudo com uma carinha feliz."
-    },
-    "DocWriter": {
-        "File Name": "docwriter.png",
-        "Alt Text": "Projeto: Docwriter, Chatbot do Discord que transforma suas mensagens em documentos de texto. Este é o bot exibindo uma visualização de como está o documento, mostrando o texto presente nele, a página atual e botões para trocar de página."
-    },
-    "Warehouse": {
-        "File Name": "warehouse.png",
-        "Alt Text": "Projeto: Warehouse, Site de trocas e doações, feito para facilitar o processo e unir mais as pessoas. Na landing page é exibido uma foto de pessoas com objetos nas mãos."
-    },
-    "Projects": {
-        // Photo by Stanley Dai on Unsplash. Link: https://unsplash.com/photos/73OZYNjVoNI
-        "File Name": "projects.jpg",
-        "Alt Text": "Imagem de placeholder para os projetos, uma mesa de um desenvolvedor com ele trabalhando."
-    },
-    "Emoji Face": {
-        "File Name": "emojiFace.png",
-        "Alt Text": "Um emoji sorrindo =)."
-    }
-};
+import i18next from 'i18next'
+import {initReactI18next} from 'react-i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
+import ptBr from '../../locale/pt-BR'
+import en from '../../locale/en'
 
-// MAIN BUTTONS (SECTION CHANGING)
-export const MAIN_BUTTONS = {
-    "About Me": {
-        "Description Image": "Henrique",
-        "Description Text": "Conheça mais sobre mim.",
-        "Text": "Sobre Mim",
-        "Icon": "user",
-        "Frame Name": "About Me"
-    },
-    "Projects": {
-        "Description Image": "Bug Hunter",
-        "Description Text": "Olhe meus trabalhos e projetos pessoais.",
-        "Text": "Projetos",
-        "Icon": "folder",
-        "Frame Name": "Projects"
-    },
-    "LinkedIn": {
-        "Description Image": "Henrique",
-        "Description Text": "Veja meu perfil no LinkedIn.",
-        "Text": "LinkedIn",
-        "Icon": "linkedin",
-        "Link": "https://www.linkedin.com/in/henribdev/"
-    },
-    "GitHub": {
-        "Description Image": "Henrique",
-        "Description Text": "Acesse meu portfolio de códigos no GitHub.",
-        "Text": "GitHub",
-        "Icon": "github",
-        "Link": "https://github.com/HenriBDev"
-    }
-};
 
-// DROPDOWN MENUS (PROJECTS SEPARATED BY AREA)
-export const PROJECTS = {
-    "Desenvolvimento Web": {
-        "Site Pessoal": {
-            "Description Image": "Emoji Face",
-            "Description Text": "Eaí? Tá curtindo a visita?",
-            "Link": window.location.href
-        },
-        "DocWriter": {
-            "Description Image": "DocWriter",
-            "Description Text": "Chatbot para Discord gerador de documentos de texto.",
-            "Link": "https://github.com/HenriBDev/DocWriter"
-        },
-        "Bug Hunter": {
-            "Description Image": "Bug Hunter",
-            "Description Text": "Jogo estilo Bomberman desenvolvido com JS puro.",
-            "Link": "https://henribdev.github.io/Bug-Hunter/"
-        },
-        "Warehouse": {
-            "Description Image": "Warehouse",
-            "Description Text": "Site para realizar trocas e doações com maior facilidade (Conceito).",
-            "Link": "https://github.com/Vichiat0/Warehouse"
+i18next
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+        // fallbackLng: 'pt_Br',
+        resources: {
+            fallbackLng: "en",
+            "pt-BR": {
+                translation: ptBr
+            },
+            "en": {
+                translation: en
+            }
         }
-    },
-    "Desenvolvimento de Games": {
-        "Bug Hunter": {
-            "Description Image": "Bug Hunter",
-            "Description Text": "Jogo estilo Bomberman desenvolvido com JS puro.",
-            "Link": "https://henribdev.github.io/Bug-Hunter/"
-        },
-    }
-};
-
-// CALCULATING MY AGE
-const BIRTH_YEAR = 2003,
-    BIRTH_MONTH = 3,
-    BIRTH_DAY = 10,
-    CURRENT_DATE = new Date();
-    
-let myAge = CURRENT_DATE.getFullYear() - BIRTH_YEAR;
-if(CURRENT_DATE.getMonth() < BIRTH_MONTH-1 || (CURRENT_DATE.getMonth() == BIRTH_MONTH-1 && CURRENT_DATE.getDate() < BIRTH_DAY)){
-    myAge--;
-}
-
-const ABOUT_ME_TEXT = 
-    `Opa! tudo bom? Me chamo Henrique, tenho ${myAge} anos, sou um desenvolvedor de software, programando desde 2018.\n` +
-    "Criei esse site como uma maneira de me apresentar e compartilhar meus projetos com o mundo.\n\n" +
-    "Sempre gostei muito de lógica, cálculos, deduções e o processo de desenvolver coisas novas.\n" +
-    "Hoje resolvo problemas programando soluções para ideias originais e/ou atendendo a demanda do mercado.\n\n" +
-    "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânica de videogames, é meu hobby predileto no momento.\n\n" +
-    "Atuo trabalhando com RPA, mas possuo interesse em diversas áreas do mundo de software, venho estudando nos últimos anos sobre aprendizado de máquina.\n" +
-    "Acredito que a automação de processos utilizando inteligência artifical vai continuar tornando muitas tarefas manuais obsoletas, requisitando mais atuação no processo de planejamento do que na parte prática em si.\n\n" +
-    "Se meu trabalho chamou sua atenção, nem pense duas vezes e me contate para batermos um papo =)\n" +
-    "Você pode me encontrar pelo LinkedIn, o link está na seção principal desta página.",
-
-// SELECTION VALUES
-SELECTIONS = {
-    "None (Main)": {
-        "Description Image": "Henrique",
-        "Description Text": "Desejo boas-vindas ao meu site! Espero que goste da estadia ;)"
-    },
-    "None (About Me)": {
-        "Description Image": "",
-        "Description Text": ABOUT_ME_TEXT
-    },
-    "None (Projects)": {
-        "Description Image": "Projects",
-        "Description Text": "Selecione um projeto para ver mais sobre ele."
-    },
-};
-
-// Adds main's buttons as selections
-Object.keys(MAIN_BUTTONS).forEach(buttonName => {
-    SELECTIONS[buttonName + " Button (Main)"] = {
-        "Description Image": MAIN_BUTTONS[buttonName]["Description Image"],
-        "Description Text": MAIN_BUTTONS[buttonName]["Description Text"]
-    }
-});
-
-// Adds projects as selections
-Object.keys(PROJECTS).forEach(areaName => {
-    Object.keys(PROJECTS[areaName]).forEach(projectName => {
-        SELECTIONS[projectName + " Row (Projects)"] = PROJECTS[areaName][projectName]
     })
-});
-
-export {SELECTIONS};
+    
+i18next.changeLanguage()
 
 export const PREMADE_SVG_ICONS ={
     "backArrow": {
