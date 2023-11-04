@@ -12,5 +12,6 @@
             "imageAltText": "A smiley emoji =).",
             "descriptionText": "What's up? Enjoying the visit?"
         }
-    }
+    },
+    "categories": ["webDevelopment"]
 }
