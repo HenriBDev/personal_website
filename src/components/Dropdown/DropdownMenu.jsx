@@ -29,11 +29,11 @@ function DropdownMenu({menuName, rows, onRowHover, onRowClick}) {
                 height: 0
             }}
         >
-            {dropdownIsOpen && (Object.keys(rows).map((rowName, index) => <DropdownRow
+            {dropdownIsOpen && (Object.keys(rows).map((projId, index) => <DropdownRow
                 key={index}
-                onHover={() => dropdownIsOpen ? onRowHover(rowName) : {}}
-                onClick={() => dropdownIsOpen ? onRowClick(rowName) : {}}
-                rowText={rowName}
+                onHover={() => dropdownIsOpen ? onRowHover(projId) : {}}
+                onClick={() => dropdownIsOpen ? onRowClick(projId) : {}}
+                rowText={rows[projId]}
                 isEndRow={index === TOTAL_ROWS - 1}
             />))}
         </div>

@@ -1,155 +1,52 @@
+// PROJECT DATA
+import { SUPPORTED_LANGUAGES, PROJECT_CATEGORIES } from "../js/constants";
+
 // STYLE
-import './Frame.css'
+import "./Frame.css"
 
 // COMPONENTS
-import ImageDisplay from './ImageDisplay';
-import Button from './Button';
-import Pad from './Pad';
-import DropdownMenu from './Dropdown/DropdownMenu';
+import ImageDisplay from "./ImageDisplay";
+import Button from "./Button";
+import Pad from "./Pad";
+import DropdownMenu from "./Dropdown/DropdownMenu";
 
 // REACT HOOKS
-import {useTranslation} from 'react-i18next'
-import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from "react-i18next"
+import { useState, useRef, useEffect } from "react";
+import { getProjects } from "../js/utils";
 
 function Frame() {
     
     const { t, i18n } = useTranslation();
 
-    // IMAGES AND THEIR DESCRIPTIONS
-    const IMAGES = {
-        "Henrique": {
-            "File Name": "myPhoto.jpg",
-            "Alt Text": t('images.me.altText')
-        },
-        "Bug Hunter":{
-            "File Name": "bugHunter.png",
-            "Alt Text": t('images.bugHunter.altText')
-        },
-        "DocWriter": {
-            "File Name": "docwriter.png",
-            "Alt Text": t('images.docWriter.altText')
-        },
-        "Warehouse": {
-            "File Name": "warehouse.png",
-            "Alt Text": t('images.warehouse.altText')
-        },
-        "Projects": {
-            // Photo by Stanley Dai on Unsplash. Link: https://unsplash.com/photos/73OZYNjVoNI
-            "File Name": "projects.jpg",
-            "Alt Text": t('images.projects.altText')
-        },
-        "Emoji Face": {
-            "File Name": "emojiFace.png",
-            "Alt Text": t('images.emojiFace.altText')
-        }
-    };
-
     // MAIN BUTTONS (SECTION CHANGING)
     const MAIN_BUTTONS = {
-        "About Me": {
-            "Description Image": "Henrique",
-            "Description Text": t('buttons.main.aboutMe.descriptionText'),
-            "Text": t('buttons.main.aboutMe.buttonText'),
-            "Icon": "user",
-            "Frame Name": "About Me"
+        "main.aboutMe": {
+            "text": t("mainButtons.aboutMe.buttonText"),
+            "icon": "user",
+            "frameName": "aboutMe"
         },
-        "Projects": {
-            "Description Image": "Bug Hunter",
-            "Description Text": t('buttons.main.projects.descriptionText'),
-            "Text": t('buttons.main.projects.buttonText'),
-            "Icon": "folder",
-            "Frame Name": "Projects"
+        "main.projects": {
+            "text": t("mainButtons.projects.buttonText"),
+            "icon": "folder",
+            "frameName": "projects"
         },
-        "LinkedIn": {
-            "Description Image": "Henrique",
-            "Description Text": t('buttons.main.linkedin.descriptionText'),
-            "Text": t('buttons.main.linkedin.buttonText'),
-            "Icon": "linkedin",
-            "Link": "https://www.linkedin.com/in/henribdev/"
+        "main.linkedin": {
+            "text": t("mainButtons.linkedin.buttonText"),
+            "icon": "linkedin",
+            "link": "https://www.linkedin.com/in/henribdev/"
         },
-        "GitHub": {
-            "Description Image": "Henrique",
-            "Description Text": t('buttons.main.github.descriptionText'),
-            "Text": t('buttons.main.github.buttonText'),
-            "Icon": "github",
-            "Link": "https://github.com/HenriBDev"
+        "main.github": {
+            "text": t("mainButtons.github.buttonText"),
+            "icon": "github",
+            "link": "https://github.com/HenriBDev"
         }
-    };
-
-    // DROPDOWN MENUS (PROJECTS SEPARATED BY AREA)
-    let webDevelopementLabel = t('dropdownMenus.webDevelopment'),
-        gameDevelopmentLabel = t('dropdownMenus.gameDevelopment');
-
-    const PROJECTS = {}
-    PROJECTS[webDevelopementLabel] = {}
-    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.personalWebsite.buttonText')] = {
-        "Description Image": "Emoji Face",
-        "Description Text": t('buttons.projects.webDevelopment.personalWebsite.descriptionText'),
-        "Link": window.location.href
-    }
-    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.docWriter.buttonText')] = {
-        "Description Image": "DocWriter",
-        "Description Text": t('buttons.projects.webDevelopment.docWriter.descriptionText'),
-        "Link": "https://github.com/HenriBDev/DocWriter"
-    }
-    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.bugHunter.buttonText')] = {
-        "Description Image": "Bug Hunter",
-        "Description Text": t('buttons.projects.webDevelopment.bugHunter.descriptionText'),
-        "Link": "https://henribdev.github.io/Bug-Hunter/"
-    }
-    PROJECTS[webDevelopementLabel][t('buttons.projects.webDevelopment.warehouse.buttonText')] = {
-        "Description Image": "Warehouse",
-        "Description Text": t('buttons.projects.webDevelopment.warehouse.descriptionText'),
-        "Link": "https://github.com/Vichiat0/Warehouse"
-    }
-    PROJECTS[gameDevelopmentLabel] = {}
-    PROJECTS[gameDevelopmentLabel][t('buttons.projects.gameDevelopment.bugHunter.buttonText')] = {
-        "Description Image": "Bug Hunter",
-        "Description Text": t('buttons.projects.gameDevelopment.bugHunter.descriptionText'),
-        "Link": "https://henribdev.github.io/Bug-Hunter/"
-    }
-
-    // SELECTION VALUES
-    const SELECTIONS = {
-        "None (Main)": {
-            "Description Image": "Henrique",
-            "Description Text": t('descriptionPads.main')
-        },
-        "None (About Me)": {
-            "Description Image": "",
-            "Description Text": t('descriptionPads.aboutMe')
-        },
-        "None (Projects)": {
-            "Description Image": "Projects",
-            "Description Text": t('descriptionPads.projects')
-        },
-    };
-
-    // Adds main's buttons as selections
-    Object.keys(MAIN_BUTTONS).forEach(buttonName => {
-        SELECTIONS[buttonName + " Button (Main)"] = {
-            "Description Image": MAIN_BUTTONS[buttonName]["Description Image"],
-            "Description Text": MAIN_BUTTONS[buttonName]["Description Text"]
-        }
-    });
-
-    // Adds projects as selections
-    Object.keys(PROJECTS).forEach(areaName => {
-        Object.keys(PROJECTS[areaName]).forEach(projectName => {
-            SELECTIONS[projectName + " Row (Projects)"] = PROJECTS[areaName][projectName]
-        })
-    });
-
-    // LANGUAGES
-    const LNGS = {
-        "pt-BR": { nativeName: 'Português (Brasil)' },
-        "en": { nativeName: 'English' }
     };
     
     // STATES
     let [descriptionPadText, setDescriptionPadText] = useState(""),
-        [currentSelection, setcurrentSelection] = useState("None (Main)"),
-        [currentFrame, setCurrentFrame] = useState("Main"),
+        [currentSelection, setCurrentSelection] = useState("main"),
+        [currentFrame, setCurrentFrame] = useState("main"),
         [frameImageVisibilityClass, setFrameImageVisibilityClass] = useState(""),
         [frameVisibilityClass, setFrameVisibilityClass] = useState(""),
         [padCursor, setpadCursor] = useState(""),
@@ -157,7 +54,53 @@ function Frame() {
         [languageSelected, setLanguageSelected] = useState(i18n.resolvedLanguage);
         
     // PERSISTENT VALUES
-    const TEXT_INDEX = useRef(1),
+    const HENRIBDEV_PROJECTS = useRef({}),
+        IMAGES = useRef({
+            "me": {
+                "image": "myPhoto.jpg",
+                "altTextKey": "imagesAltText.me"
+            },
+            "projects": {
+                "image": "bugHunter.png",
+                "altTextKey": "imagesAltText.projects"
+            },
+            "projectsPlaceholder": {
+                // Photo by Stanley Dai on Unsplash. Link: https://unsplash.com/photos/73OZYNjVoNI
+                "image": "projects.jpg",
+                "altTextKey": "imagesAltText.projectPlaceholder"
+            }
+        }),
+        DESCRIPTIONS = useRef({
+            "main": {
+                "descriptionImage": "me",
+                "descriptionTextKey": "descriptionPads.main"
+            },
+            "main.aboutMe": {
+                "descriptionImage": "me",
+                "descriptionTextKey": "mainButtons.aboutMe.descriptionText",
+            },
+            "main.projects": {
+                "descriptionImage": "projects",
+                "descriptionTextKey": "mainButtons.projects.descriptionText",
+            },
+            "main.linkedin": {
+                "descriptionImage": "me",
+                "descriptionTextKey": "mainButtons.linkedin.descriptionText",
+            },
+            "main.github": {
+                "descriptionImage": "me",
+                "descriptionTextKey": "mainButtons.github.descriptionText",
+            },
+            "aboutMe": {
+                "descriptionImage": "projects",
+                "descriptionTextKey": "descriptionPads.aboutMe"
+            },
+            "projects": {
+                "descriptionImage": "projectsPlaceholder",
+                "descriptionTextKey": "descriptionPads.projects"
+            },
+        }),
+        TEXT_INDEX = useRef(1),
         TEXT_ANIMATION_TIMER = useRef(0),
         IMAGE_ANIMATION_TIMER = useRef(0),
         CURRENT_SELECTION_PERSISTENT = useRef(currentSelection),
@@ -170,10 +113,10 @@ function Frame() {
         },
         startImageFadeAnimation = newSelection => {
             CURRENT_SELECTION_PERSISTENT.current = newSelection
-            if(SELECTIONS[currentSelection]["Description Image"] != SELECTIONS[newSelection]["Description Image"]){
+            if(DESCRIPTIONS.current[currentSelection]["descriptionImage"] != DESCRIPTIONS.current[newSelection]["descriptionImage"]){
                 setFrameImageVisibilityClass("hidden")
             }else{
-                setcurrentSelection(newSelection)
+                setCurrentSelection(newSelection)
             }
         },
 
@@ -184,7 +127,7 @@ function Frame() {
                     setFrameImageVisibilityClass("") 
                 }, 150)
             } else if (frameImageVisibilityClass == ""){
-                setcurrentSelection(CURRENT_SELECTION_PERSISTENT.current)
+                setCurrentSelection(CURRENT_SELECTION_PERSISTENT.current)
             }
         },
         frameFadeAnimation = () => {
@@ -192,25 +135,24 @@ function Frame() {
                 setTimeout(() => { setFrameVisibilityClass("") }, 300)
             } else if (frameVisibilityClass == ""){
                 setCurrentFrame(CURRENT_FRAME_PERSISTENT.current)
-                CURRENT_SELECTION_PERSISTENT.current = `None (${CURRENT_FRAME_PERSISTENT.current})`
-                setcurrentSelection(`None (${CURRENT_FRAME_PERSISTENT.current})`)
+                setCurrentSelection(CURRENT_FRAME_PERSISTENT.current)
             }
         },
         clearTextAnimation = () => {
             clearTimeout(TEXT_ANIMATION_TIMER.current)
             TEXT_INDEX.current = 2;
-            setDescriptionPadText(SELECTIONS[currentSelection]["Description Text"][0]);
+            setDescriptionPadText(t(DESCRIPTIONS.current[currentSelection]["descriptionTextKey"])[0]);
         },
         tickTextAnimation = () => {
-            if (descriptionPadText != SELECTIONS[currentSelection]["Description Text"]) {
+            if (descriptionPadText != t(DESCRIPTIONS.current[currentSelection]["descriptionTextKey"])) {
                 let timeoutMs = 0
-                if (currentFrame == "About Me"){
+                if (currentFrame == "aboutMe"){
                     timeoutMs = 15
                 } else{
                     timeoutMs = 20
                 }
                 TEXT_ANIMATION_TIMER.current = setTimeout(() => {
-                    setDescriptionPadText(SELECTIONS[currentSelection]["Description Text"].substring(0, TEXT_INDEX.current));
+                    setDescriptionPadText(t(DESCRIPTIONS.current[currentSelection]["descriptionTextKey"]).substring(0, TEXT_INDEX.current));
                     TEXT_INDEX.current++;
                 }, timeoutMs);
             }else{
@@ -234,118 +176,147 @@ function Frame() {
     useEffect(tickTextAnimation, [descriptionPadText]);
     useEffect(togglePadCursor, [padCursor]);
     useEffect(changeLanguageSelected, [languageSelected]);
+    useEffect(() => {(async () => {
+        HENRIBDEV_PROJECTS.current = await getProjects()
+        Object.keys(HENRIBDEV_PROJECTS.current).forEach(projId => {
+            
+            Object.keys(SUPPORTED_LANGUAGES).forEach(lng => {
+                const translation = i18n.getResourceBundle(lng, "translation");
+                translation["projects"][projId] = HENRIBDEV_PROJECTS.current[projId]["textContent"][lng]
+                i18n.addResources(lng, "translation", translation);
+            })    
+
+            IMAGES.current[projId] = {
+                "image": HENRIBDEV_PROJECTS.current[projId]["image"],
+                "altTextKey": `projects.${projId}.imageAltText`
+            }
+            
+            DESCRIPTIONS.current[`projects.${projId}`] = {
+                "descriptionImage": projId,
+                "descriptionTextKey": `projects.${projId}.descriptionText`
+            }
+            
+        })
+    })()}, [])
 
     // COMPONENT
     return <section className="frame">
         {imageDisplayIsVisible &&
             <ImageDisplay 
-                imgName={IMAGES[SELECTIONS[currentSelection]["Description Image"]]["File Name"]}
-                imgDescription={IMAGES[SELECTIONS[currentSelection]["Description Image"]]["Alt Text"]}
+                imgName={IMAGES.current[DESCRIPTIONS.current[currentSelection]["descriptionImage"]]["image"]}
+                imgDescription={t(IMAGES.current[DESCRIPTIONS.current[currentSelection]["descriptionImage"]]["altTextKey"])}
                 closeEvent={() => setImageDisplayIsVisible(false)}
             />
         }
         <div className={`frame__content ${frameVisibilityClass}`}>
-            <header className='frame__head'>
+            <header className="frame__head">
                 <div className="frame__head--l-side">
-                    {(currentFrame == "About Me" || currentFrame == "Projects") &&
+                    {(currentFrame == "aboutMe" || currentFrame == "projects") &&
                         <Button
-                            buttonType="Icon"
+                            buttonType="icon"
                             iconName="backArrow" 
-                            onClick={() => startFrameFadeAnimation("Main")}
+                            onClick={() => startFrameFadeAnimation("main")}
                         />
                     }
                 </div>
-                <div className='frame__head--center'>
-                    {currentFrame == "Main" &&     <h5>HENRIQUE BARBOSA</h5> }
-                    {currentFrame == "About Me" && <div className='subheading3'>{t('buttons.main.aboutMe.buttonText')}</div>}
-                    {currentFrame == "Projects" && <div className='subheading3'>{t('buttons.main.projects.buttonText')}</div>}
+                <div className="frame__head--center">
+                    {currentFrame == "main" &&     <h5>HENRIQUE BARBOSA</h5> }
+                    {currentFrame == "aboutMe" && <div className="subheading3">{t("mainButtons.aboutMe.buttonText")}</div>}
+                    {currentFrame == "projects" && <div className="subheading3">{t("mainButtons.projects.buttonText")}</div>}
                 </div>
                 <div className="frame__head--r-side body2">
-                    {t('languageSelectLabel')}: <select className='language_selection body3' defaultValue={i18n.resolvedLanguage} onChange={e => setLanguageSelected(e.target.value)}>
-                        {Object.keys(LNGS).map(lng => <option 
+                    {t("languageSelectLabel")}: <select className="language_selection body3" defaultValue={i18n.resolvedLanguage} onChange={e => setLanguageSelected(e.target.value)}>
+                        {Object.keys(SUPPORTED_LANGUAGES).map(lng => <option 
                             key={lng} 
                             value={lng}
                         >
-                            {LNGS[lng]["nativeName"]}
+                            {SUPPORTED_LANGUAGES[lng]["nativeName"]}
                         </option>)}
                     </select>
                 </div>
             </header>
             <div className={`frame__body`}>
-                {currentFrame != "About Me" && (
-                    <nav className={`frame__body__column ${currentFrame == "Projects" ? "frame__body__column--projects" : "frame__body__column--main"}`}>
-                        {currentFrame == "Main" && (<>
+                {currentFrame != "aboutMe" && (
+                    <nav className={`frame__body__column ${currentFrame == "projects" ? "frame__body__column--projects" : "frame__body__column--main"}`}>
+                        {currentFrame == "main" && (<>
                             {Object.keys(MAIN_BUTTONS).map((buttonName, index) => <Button
                                 key={index}
-                                buttonType="Text"
-                                onHover={() => startImageFadeAnimation(`${buttonName} Button (${currentFrame})`)}
+                                buttonType="text"
+                                onHover={() => startImageFadeAnimation(buttonName)}
                                 onClick={() => {
-                                    if(Object.prototype.hasOwnProperty.call(MAIN_BUTTONS[buttonName], 'Frame Name')){
-                                        startFrameFadeAnimation(MAIN_BUTTONS[buttonName]["Frame Name"])
+                                    if(Object.prototype.hasOwnProperty.call(MAIN_BUTTONS[buttonName], "frameName")){
+                                        startFrameFadeAnimation(MAIN_BUTTONS[buttonName]["frameName"])
                                     }
-                                    if(Object.prototype.hasOwnProperty.call(MAIN_BUTTONS[buttonName], 'Link')){
-                                        window.open(MAIN_BUTTONS[buttonName]["Link"], '_blank', "noreferrer")
+                                    if(Object.prototype.hasOwnProperty.call(MAIN_BUTTONS[buttonName], "link")){
+                                        window.open(MAIN_BUTTONS[buttonName]["link"], "_blank", "noreferrer")
                                     }
                                 }}
-                                iconName={MAIN_BUTTONS[buttonName]["Icon"]}
-                                text={MAIN_BUTTONS[buttonName]["Text"]}
-                                link={Object.prototype.hasOwnProperty.call(MAIN_BUTTONS[buttonName], 'Link') ? MAIN_BUTTONS[buttonName]["Link"] : ""}
+                                iconName={MAIN_BUTTONS[buttonName]["icon"]}
+                                text={MAIN_BUTTONS[buttonName]["text"]}
                             />)}
                         </>)}
-                        {currentFrame == "Projects" && (<>
-                            {Object.keys(PROJECTS).map((areaName, index) => <DropdownMenu
+                        {currentFrame == "projects" && (<>
+                            {Object.keys(PROJECT_CATEGORIES).map((categoryId, index) => <DropdownMenu
                                 key={index}
-                                menuName={areaName}
-                                rows={PROJECTS[areaName]}
-                                onRowHover={rowName => startImageFadeAnimation(`${rowName} Row (${currentFrame})`)}
-                                onRowClick={rowName => window.open(PROJECTS[areaName][rowName]["Link"], '_blank', "noreferrer").focus()}
+                                menuName={t(`projectCategories.${categoryId}`)}
+                                rows={(() => {
+                                    let rows = {}
+                                    Object.keys(HENRIBDEV_PROJECTS.current)
+                                        .filter(projId => HENRIBDEV_PROJECTS.current[projId]["categories"].includes(categoryId))
+                                        .forEach(projId => {
+                                            rows[projId] = t(`projects.${projId}.name`)
+                                        })
+                                    return rows
+                                })()}
+                                onRowHover={projId => startImageFadeAnimation(`${currentFrame}.${projId}`)}
+                                onRowClick={projId => window.open(HENRIBDEV_PROJECTS.current[projId]["url"], "_blank", "noreferrer").focus()}
                             />)}
-                            <div className='body2 more-projects-label'>{t('projectsMenuText')}</div>
+                            <div className="body2 more-projects-label">{t("projectsMenuText")}</div>
                         </>)}
                     </nav>
                 )}
                 <Pad 
                     type={
-                        ((currentFrame == "Main" || currentFrame == "Projects") && 
+                        ((currentFrame == "main" || currentFrame == "projects") && 
                             "image"
-                        ) || (currentFrame == "About Me" && 
+                        ) || (currentFrame == "aboutMe" && 
                             "text-paragraph"
                         )
                     } 
                     visibilityClass={frameImageVisibilityClass} 
                     imgName={
-                        ((currentFrame == "Main" || currentFrame == "Projects") && 
-                            IMAGES[SELECTIONS[currentSelection]["Description Image"]]["File Name"]
-                        ) || (currentFrame == "About Me" && 
+                        ((currentFrame == "main" || currentFrame == "projects") && 
+                            IMAGES.current[DESCRIPTIONS.current[currentSelection]["descriptionImage"]]["image"]
+                        ) || (currentFrame == "aboutMe" && 
                             ""
                         )
                     }
                     imgDescription={
-                        ((currentFrame == "Main" || currentFrame == "Projects") && 
-                            IMAGES[SELECTIONS[currentSelection]["Description Image"]]["Alt Text"]
-                        ) || (currentFrame == "About Me" && 
+                        ((currentFrame == "main" || currentFrame == "projects") && 
+                            t(IMAGES.current[DESCRIPTIONS.current[currentSelection]["descriptionImage"]]["altTextKey"])
+                        ) || (currentFrame == "aboutMe" && 
                             ""
                         )
                     }
                     padText={
-                        ((currentFrame == "Main" || currentFrame == "Projects") && 
+                        ((currentFrame == "main" || currentFrame == "projects") && 
                             ""
-                        ) || (currentFrame == "About Me" && 
+                        ) || (currentFrame == "aboutMe" && 
                             descriptionPadText
                         )
                     }
                     cursor={padCursor}
                     onClick={() => {
-                        if (currentFrame == "About Me"){ 
+                        if (currentFrame == "aboutMe"){ 
                             clearTimeout(TEXT_ANIMATION_TIMER.current)
-                            setDescriptionPadText(SELECTIONS[currentSelection]["Description Text"])
+                            setDescriptionPadText(t(DESCRIPTIONS.current[currentSelection]["descriptionTextKey"]))
                         }else{
                             setImageDisplayIsVisible(true)
                         }
                     }}
                 />
             </div>
-            {currentFrame != "About Me" &&
+            {currentFrame != "aboutMe" &&
                 <div className="frame__foot">
                     <Pad 
                         type="text-line" 
@@ -353,7 +324,7 @@ function Frame() {
                         cursor={padCursor}
                         onClick={() => {
                             clearTimeout(TEXT_ANIMATION_TIMER.current)
-                            setDescriptionPadText(SELECTIONS[currentSelection]["Description Text"])
+                            setDescriptionPadText(t(DESCRIPTIONS.current[currentSelection]["descriptionTextKey"]))
                         }}
                     />
                 </div>

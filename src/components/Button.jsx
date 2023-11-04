@@ -18,7 +18,7 @@ function Button({buttonType, onHover, onLeaving, onClick, iconName, text}) {
             onClick={onClick}
         >
             <SvgIcon iconName={iconName} customClasses="button__icon"/>
-            {buttonType == "Text" &&
+            {buttonType == "text" &&
                 <div className="button__text subheading4">{text}</div>
             }
 
