@@ -48,5 +48,9 @@ export const BIRTH_DATE = new Date("2003-03-10"),
         "gameDevelopment": {
             "pt-BR": "Desenvolvimento de Games",
             "en": "Game Development"
+        },
+        "desktopDevelopment": {
+            "pt-BR": "Desenvolvimento Desktop",
+            "en": "Desktop Development"
         }
     }
