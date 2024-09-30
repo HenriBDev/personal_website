@@ -32,7 +32,7 @@ const TRANSLATION = {
                    "Sempre gostei muito de lógica, cálculos, deduções e o processo de desenvolver coisas novas.\n" +
                    "Hoje resolvo problemas programando soluções para ideias originais e/ou atendendo a demanda do mercado.\n\n" +
                    "Curto muito também desenvolvimento de games, sempre fui fascinado por mecânica de videogames, é meu hobby predileto no momento.\n\n" +
-                   "Atuo trabalhando com RPA, mas possuo interesse em diversas áreas do mundo de software, venho estudando nos últimos anos sobre aprendizado de máquina.\n" +
+                   "Atuo trabalhando como Analista de Desenvolvimento, mas possuo interesse em diversas áreas do mundo de software, venho estudando nos últimos anos sobre aprendizado de máquina.\n" +
                    "Acredito que a automação de processos utilizando inteligência artifical vai continuar tornando muitas tarefas manuais obsoletas, requisitando mais atuação no processo de planejamento do que na parte prática em si.\n\n" +
                    "Se meu trabalho chamou sua atenção, nem pense duas vezes e me contate para batermos um papo =)\n" +
                    "Você pode me encontrar pelo LinkedIn, o link está na seção principal desta página.",
