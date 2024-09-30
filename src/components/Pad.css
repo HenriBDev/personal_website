@@ -40,6 +40,6 @@
 .pad__display{
     opacity: 1;
     transition: .15s;
-    height: 100%;
+    max-width: 20rem;
     cursor: zoom-in;
 }

@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ruda:wght@700;900&family=Rubik:wght@400&display=swap');
 
 :root{
-    --bg__color: linear-gradient(90deg, #2376B6, #094573);
+    --bg__color: #001E35;
 }
 
 *{
@@ -13,8 +13,6 @@
 #root{
     height: 100vh;
     width: 100vw;
-    background: var(--bg__color);
-    padding: 6.75rem 6rem;
 }
 
 @media (min-height: 100vw){
