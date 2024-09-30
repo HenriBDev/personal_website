@@ -13,6 +13,7 @@
 
 .image-display__image{
     max-width: 100%;
+    max-height: 80%;
 }
 
 .image-display__description{
